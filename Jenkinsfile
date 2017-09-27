@@ -1,5 +1,5 @@
 node {
-  def myGradleContainer = docker.image('docker pull lcastrooliveira/gradle:jdk-8-bash')
+  def myGradleContainer = docker.image('lcastrooliveira/gradle:jdk-8-bash')
   myGradleContainer.pull()
   stage('prep') {
     checkout scm

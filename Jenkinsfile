@@ -14,4 +14,15 @@ node {
        sh 'cd complete && ./gradlew run'
      }
   }
+  stage('publish') {
+    dockerBuildAndPublish {
+      repositoryName('registry/docker-nodejs-demo')
+      tag('${GIT_REVISION,length=9}')
+      registryCredentials('dockerhub')
+      forcePull(false)
+      forceTag(false)
+      createFingerprints(false)
+      skipDecorate()
+    }
+  }     
 }
